@@ -10,7 +10,7 @@ const Manager = () => {
   const [passwordArray, setPasswordArray] = useState([]);
 
   const getPasswords = async () => {
-    let req = await fetch("http://localhost:3000");
+    let req = await fetch("https://pass-op-taupe-three.vercel.app");
     let passwords = await req.json();
     console.log(passwords);
     setPasswordArray(passwords);
@@ -56,7 +56,7 @@ const Manager = () => {
         updatedForm.id = uuidv4(); // Assign a new ID
       } else {
         // Delete the old entry from backend if editing
-        await fetch("http://localhost:3000/", {
+        await fetch("https://pass-op-taupe-three.vercel.app", {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ id: form.id }),
@@ -66,7 +66,7 @@ const Manager = () => {
       //If any such id exists in db, delete it
       // await fetch("http://localhost:3000/",{method:"DELETE",headers:{"Content-Type":"application/json"}, body: JSON.stringify({id:form.id})})
 
-      await fetch("http://localhost:3000/", {
+      await fetch("https://pass-op-taupe-three.vercel.app", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedForm),
@@ -115,7 +115,7 @@ const Manager = () => {
       //   "passwords",
       //   JSON.stringify(passwordArray.filter((item) => item.id !== id))
       // );
-      let res = await fetch("http://localhost:3000/", {
+      let res = await fetch("https://pass-op-taupe-three.vercel.app", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),
