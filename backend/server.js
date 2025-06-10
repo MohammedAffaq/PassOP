@@ -20,20 +20,20 @@ app.use(cors())
 client.connect();
 
 
-// app.get('/', async (req, res) => {
-//   const db = client.db(dbName);
-//   const collection = db.collection('passwords');
-//   const findResult = await collection.find({}).toArray();
-//   res.json(findResult)
-//   // console.log(findResult)
-// })
-
-app.get('/',(req,res)=>{
-  res.send({
-    activeStatus:true,
-    error:false,
-  })
+app.get('/', async (req, res) => {
+  const db = client.db(dbName);
+  const collection = db.collection('passwords');
+  const findResult = await collection.find({}).toArray();
+  res.json(findResult)
+  // console.log(findResult)
 })
+
+// app.get('/',(req,res)=>{
+//   res.send({
+//     activeStatus:true,
+//     error:false,
+//   })
+// })
 
 // Save the password 
 app.post('/', async (req, res) => {
